@@ -19,11 +19,24 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
         return comic;
     }
 
+    delete(comicId: string): boolean {
+        const index = this.comics.findIndex(comic => comic.id === comicId);
+        if (index === -1) {
+            return false;
+        }
+        this.comics.splice(index, 1);
+        return true;
+    }
+
     getAll(): Comic[] {
         return this.comics;
     }
 
     getById(comicId: string): Comic | undefined {
         return this.comics.find(comic => comic.id === comicId);
+    }
+
+    getComicsByUser(userId: string): (Comic | undefined)[] {
+        return this.userComicRepository.getComicsByUserId(userId);
     }
 }
