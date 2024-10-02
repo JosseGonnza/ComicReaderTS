@@ -2,15 +2,14 @@ import {User} from "../../../user/domain/entities/User";
 import {Comic} from "../../../comic/domain/entities/Comic";
 
 export class UserComic {
-    userId: string;
-    comicId: string;
-    user: User;
-    comic: Comic;
+    public userId: string;
+    public comicId: string;
 
-    constructor(user: User, comic: Comic) {
-        this.userId = user.id;
-        this.comicId = comic.id;
-        this.user = user;
-        this.comic = comic;
+    public user: User | undefined;
+    public comic: Comic | undefined;
+
+    constructor(userId: string, comicId: string) {
+        this.userId = userId;
+        this.comicId = comicId;
     }
 }
