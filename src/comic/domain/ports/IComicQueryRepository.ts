@@ -1,5 +1,6 @@
 import {Comic} from "../entities/Comic";
 
 export interface IComicQueryRepository{
-    getComicsByUserId(userId: string): Comic[];
+    getAll(): Comic[];
+    getById(comicId: string): Comic | undefined;
 }
