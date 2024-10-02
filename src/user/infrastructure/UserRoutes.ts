@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import {FakeRepository} from "./repositories/FakeRepository";
+import {UserRepository} from "./repositories/UserRepository";
 import {UserCommandController} from "./controller/UserCommandController";
 import {UserQueryController} from "./controller/UserQueryController";
 
 const router = Router();
-const repository = new FakeRepository();
+const repository = new UserRepository();
 const userCommandController = new UserCommandController(repository);
 const userQueryController = new UserQueryController(repository);
 

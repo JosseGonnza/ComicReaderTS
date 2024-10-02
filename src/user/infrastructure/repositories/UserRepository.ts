@@ -3,7 +3,7 @@ import {User} from "../../domain/entities/User";
 import {v4 as uuidv4} from "uuid"
 import {IUserQueryRepository} from "../../domain/ports/IUserQueryRepository";
 
-export class FakeRepository implements IUserCommandRepository, IUserQueryRepository{
+export class UserRepository implements IUserCommandRepository, IUserQueryRepository{
     private users: User[] = [];
 
     getAll(): User[] {

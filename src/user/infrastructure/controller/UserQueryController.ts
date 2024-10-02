@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import {GetUser, GetUserRequest} from "../../application/useCases/GetUser";
 import {GetAllUsers} from "../../application/useCases/GetAllUsers";
-import {FakeRepository} from "../repositories/FakeRepository";
+import {UserRepository} from "../repositories/UserRepository";
 
 export class UserQueryController{
     private getUser: GetUser;
     private getAllUsers: GetAllUsers;
 
-    constructor(repository: FakeRepository) {
+    constructor(repository: UserRepository) {
         this.getUser = new GetUser(repository);
         this.getAllUsers = new GetAllUsers(repository);
     }

@@ -1,10 +1,10 @@
-import {FakeRepository} from "../../infrastructure/repositories/FakeRepository";
+import {UserRepository} from "../../infrastructure/repositories/UserRepository";
 
 
 export class DeleteUser{
-    private repository: FakeRepository;
+    private repository: UserRepository;
 
-    constructor(repository: FakeRepository) {
+    constructor(repository: UserRepository) {
         this.repository = repository;
     }
 

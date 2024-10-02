@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import {DeleteUser, DeleteUserRequest} from "../../application/useCases/DeleteUser";
 import {UpdateUser, UpdateUserRequest} from "../../application/useCases/UpdateUser";
-import {FakeRepository} from "../repositories/FakeRepository";
+import {UserRepository} from "../repositories/UserRepository";
 import {CreateUser, CreateUserRequest} from "../../application/useCases/CreateUser";
 
 export class UserCommandController {
@@ -9,7 +9,7 @@ export class UserCommandController {
     private updateUser: UpdateUser;
     private deleteUser: DeleteUser;
 
-    constructor(repository: FakeRepository) {
+    constructor(repository: UserRepository) {
         this.createUser = new CreateUser(repository);
         this.updateUser = new UpdateUser(repository);
         this.deleteUser = new DeleteUser(repository);
