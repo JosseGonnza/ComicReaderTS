@@ -1,5 +1,6 @@
 import {User} from "../../domain/entities/User";
 import {UserRepository} from "../../infrastructure/repositories/UserRepository";
+import {UserComic} from "../../../userComic/domain/entities/UserComic";
 
 export class CreateUser {
     private repository: UserRepository;
@@ -14,7 +15,8 @@ export class CreateUser {
             nickName: request.nickName,
             email: request.email,
             password: request.password,
-            phone: request.phone
+            phone: request.phone,
+            userComics: request.userComics
         };
         return this.repository.save(newUser);
     }
@@ -26,5 +28,6 @@ export interface CreateUserRequest {
     email: string;
     password: string;
     phone: string;
+    userComics: UserComic[];
 }
 
