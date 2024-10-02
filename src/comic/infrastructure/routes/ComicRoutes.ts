@@ -12,10 +12,11 @@ const commandController = new ComicCommandController(comicRepo);
 const queryController = new ComicQueryController(comicRepo);
 
 
-router.post("/users/:userId/comics", (req, res) => commandController.createComic(req, res));
-router.get("/comics", (req, res) => queryController.getAllComics(req, res));
-router.get("/comics/:id", (req, res) => queryController.getComicById(req, res));
-router.delete("/comics/:id", (req, res) => commandController.deleteComic(req, res));
-router.get("/users/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
+router.post("/:userId/comics", (req, res) => commandController.createComic(req, res));
+router.delete("/:id", (req, res) => commandController.deleteComic(req, res));
+
+router.get("/", (req, res) => queryController.getAllComics(req, res));
+router.get("/:id", (req, res) => queryController.getComicById(req, res));
+router.get("/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
 
 export default router;
