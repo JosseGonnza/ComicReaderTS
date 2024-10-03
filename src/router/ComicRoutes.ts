@@ -1,9 +1,9 @@
 // src/routes/comicRoutes.ts
 import { Router } from "express";
-import {UserComicRepository} from "../../../userComic/infrastructure/repositories/UserComicRepository";
-import {ComicRepository} from "../repositories/ComicRepository";
-import {ComicCommandController} from "../controllers/ComicCommandController";
-import {ComicQueryController} from "../controllers/ComicQueryController";
+import {UserComicRepository} from "../userComic/infrastructure/repositories/UserComicRepository";
+import {ComicRepository} from "../comic/infrastructure/repositories/ComicRepository";
+import {ComicCommandController} from "../comic/infrastructure/controllers/ComicCommandController";
+import {ComicQueryController} from "../comic/infrastructure/controllers/ComicQueryController";
 
 const router = Router();
 const userComicRepo = new UserComicRepository();
