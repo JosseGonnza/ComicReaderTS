@@ -1,12 +1,15 @@
 import {ComicRepository} from "../repositories/ComicRepository";
 import {Comic} from "../../domain/entities/Comic";
 import { Request, Response } from "express";
+import {CreateComic} from "../../application/useCases/CreateComic";
 
 export class ComicCommandController{
     private comicRepository: ComicRepository;
+    private createComic: CreateComic;
 
     constructor(comicRepository: ComicRepository) {
         this.comicRepository = comicRepository;
+        this.createComic = new CreateComic(comicRepository)
     }
 
     saveComic(req: Request, res: Response): void {
