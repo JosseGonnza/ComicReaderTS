@@ -1,5 +1,5 @@
-import {User} from "../../domain/entities/User";
 import {UserRepository} from "../../infrastructure/repositories/UserRepository";
+import {User} from "../../domain/entities/User";
 
 export class UpdateUser {
     private repository: UserRepository;

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import {UserRepository} from "../user/infrastructure/repositories/UserRepository";
 import {UserCommandController} from "../user/infrastructure/controllers/UserCommandController";
 import {UserQueryController} from "../user/infrastructure/controllers/UserQueryController";
@@ -9,7 +9,7 @@ const userCommandController = new UserCommandController(repository);
 const userQueryController = new UserQueryController(repository);
 
 router.post('/', (req, res) => userCommandController.post(req, res));
-//TODO: Componente para swagger
+// Componente para swagger
 /**
  * @swagger
  * /api/users/:

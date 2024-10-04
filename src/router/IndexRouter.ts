@@ -10,7 +10,7 @@ router.use('/api/comics', comicRoutes);
 
 export default router;
 
-//TODO: Creando componentes para swagger
+// Creando componentes para swagger
 // Seguridad
 /**
  * @swagger
@@ -22,8 +22,7 @@ export default router;
  *              name: authorization
  * */
 
-//TODO:
-// Esquema de la request de usuarios
+// Esquema de componente usuarios
 /**
  * @swagger
  * components:
@@ -52,8 +51,7 @@ export default router;
  *                      - phone
  * */
 
-//TODO:
-// Esquema de la request de comics
+// Esquema de componente Comics
 /**
  * @swagger
  * components:

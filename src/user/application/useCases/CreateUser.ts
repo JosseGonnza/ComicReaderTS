@@ -1,6 +1,6 @@
-import {User} from "../../domain/entities/User";
 import {UserRepository} from "../../infrastructure/repositories/UserRepository";
 import {UserComic} from "../../../userComic/domain/entities/UserComic";
+import {User} from "../../domain/entities/User";
 
 export class CreateUser {
     private repository: UserRepository;

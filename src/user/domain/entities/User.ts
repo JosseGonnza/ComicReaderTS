@@ -9,7 +9,7 @@ export class User {
     userComics: UserComic[]; // Relación con tabla intermedia
 
     constructor(nickName: string, email: string, password: string, phone: string) {
-        this.id = ''; // ID se genera al guardar un user
+        this.id = '';
         this.nickName = nickName;
         this.email = email;
         this.password = password;

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import {GetUser, GetUserRequest} from "../../application/useCases/GetUser";
-import {GetAllUsers} from "../../application/useCases/GetAllUsers";
 import {UserRepository} from "../repositories/UserRepository";
+import {GetAllUsers} from "../../application/useCases/GetAllUsers";
+import {GetUser, GetUserRequest} from "../../application/useCases/GetUser";
 
 export class UserQueryController{
     private getUser: GetUser;
@@ -22,7 +22,6 @@ export class UserQueryController{
         }
     }
 
-    // Query: Get all users
     getAll(req: Request, res: Response): void {
         const users = this.getAllUsers.execute();
         res.status(200).json(users);

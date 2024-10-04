@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
+import {UserRepository} from "../repositories/UserRepository";
 import {DeleteUser, DeleteUserRequest} from "../../application/useCases/DeleteUser";
 import {UpdateUser, UpdateUserRequest} from "../../application/useCases/UpdateUser";
-import {UserRepository} from "../repositories/UserRepository";
 import {CreateUser, CreateUserRequest} from "../../application/useCases/CreateUser";
 
 export class UserCommandController {

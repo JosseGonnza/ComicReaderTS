@@ -1,5 +1,4 @@
-// src/routes/comicRoutes.ts
-import { Router } from "express";
+import {Router} from "express";
 import {UserComicRepository} from "../userComic/infrastructure/repositories/UserComicRepository";
 import {ComicRepository} from "../comic/infrastructure/repositories/ComicRepository";
 import {ComicCommandController} from "../comic/infrastructure/controllers/ComicCommandController";
@@ -42,7 +41,6 @@ router.post("/:userId/comics", (req, res) => commandController.saveComic(req, re
  */
 
 router.delete("/:userId/:id", (req, res) => commandController.deleteComic(req, res));
-//TODO: No funciona aún
 /**
  * @swagger
  * /api/comics/{userId}/{id}:
