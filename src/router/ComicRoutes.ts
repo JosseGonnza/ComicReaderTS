@@ -17,7 +17,7 @@ router.post("/:userId/comics", (req, res) => commandController.saveComic(req, re
  * @swagger
  * /api/comics/{userId}/comics:
  *      post:
- *          summary: Endpoint para guardar un comic de un usuario concreto
+ *          summary: Guardar un comic de un usuario concreto
  *          tags:
  *              - Comic
  *          parameters:
@@ -47,7 +47,7 @@ router.delete("/:userId/:id", (req, res) => commandController.deleteComic(req, r
  * @swagger
  * /api/comics/{userId}/{id}:
  *      delete:
- *          summary: Endpoint para eliminar un comic de un usuario concreto
+ *          summary: Eliminar un comic de un usuario concreto
  *          tags:
  *              - Comic
  *          parameters:
@@ -108,7 +108,7 @@ router.get("/:userId/comics", (req, res) => queryController.getComicsFromUser(re
  * @swagger
  * /api/comics/{userId}/comics:
  *      get:
- *          summary: Endpoint para listar los comic de un usuario concreto
+ *          summary: Listar los comic de un usuario concreto
  *          tags:
  *              - User
  *          parameters:

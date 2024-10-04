@@ -14,7 +14,7 @@ router.post('/', (req, res) => userCommandController.post(req, res));
  * @swagger
  * /api/users/:
  *      post:
- *          summary: Endpoint para guardar un usuario
+ *          summary: Guardar un usuario
  *          tags:
  *              - User
  *          requestBody:
