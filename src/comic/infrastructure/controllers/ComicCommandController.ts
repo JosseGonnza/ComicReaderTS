@@ -26,13 +26,14 @@ export class ComicCommandController{
     }
 
     deleteComic(req: Request, res: Response): void {
-        const comicId = req.params.id;
-        const deleted = this.comicRepository.delete(comicId);
+        const comic = req.body
+        const userId = req.body.userId
+        const deleted = this.comicRepository.delete(comic, userId);
 
-        if (!deleted) {
-            res.status(404).json({ message: "Comic not found" });
+        if (deleted) {
+            res.status(200).json({message: "Comic deleted"});
         } else {
-            res.status(200).json({ message: "Comic deleted" });
+            res.status(404).json({message: "Comic not found"});
         }
     }
 }

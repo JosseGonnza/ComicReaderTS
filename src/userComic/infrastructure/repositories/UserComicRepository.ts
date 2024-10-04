@@ -7,7 +7,7 @@ import {IUserComicQueryRepository} from "../../domain/ports/IUserComicQueryRepos
 export class UserComicRepository implements IUserComicCommandRepository, IUserComicQueryRepository {
     private userComics: UserComic[] = [];
 
-    save(userId: string, comicId: string): UserComic {
+    saveComicFromUser(userId: string, comicId: string): UserComic {
         const userComic = new UserComic(userId, comicId);
         this.userComics.push(userComic);
         return userComic;

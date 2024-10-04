@@ -20,14 +20,15 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
         } else {
             comic.id = uuidv4();
             this.comics.push(comic);
-            this.userComicRepository.save(userId, comic.id);
+            this.userComicRepository.saveComicFromUser(userId, comic.id);
         }
         return comic;
     }
 
-    delete(comicId: string): boolean {
-        const index = this.comics.findIndex(comic => comic.id === comicId);
-        if (index === -1) {
+    delete(comic: Comic, userId: string): boolean {
+        const userComics = this.userComicRepository.getComicsByUserId(userId);
+        const index = this.comics.findIndex(comic => comic.id === comic.id);
+        if (index === -1 || userComics.find(index.valueOf)) {
             return false;
         }
         this.comics.splice(index, 1);

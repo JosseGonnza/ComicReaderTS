@@ -41,30 +41,68 @@ router.post("/:userId/comics", (req, res) => commandController.saveComic(req, re
  *                  description: Error interno del servidor.
  */
 
-router.delete("/:id", (req, res) => commandController.deleteComic(req, res));
+router.delete("/:userId/:id", (req, res) => commandController.deleteComic(req, res));
+//TODO: No funciona aún
+// /**
+//  * @swagger
+//  * /api/comics/{userId}/{id}:
+//  *      delete:
+//  *          summary: Endpoint para eliminar un comic de un usuario concreto
+//  *          tags:
+//  *              - Comic
+//  *          parameters:
+//  *              - in: path
+//  *                name: userId
+//  *                required: true
+//  *                description: Id del usuario
+//  *              - in: path
+//  *                name: id
+//  *                required: true
+//  *                description: Id del comic que desea eliminar
+//  *                schema:
+//  *                      type: string
+//  *          responses:
+//  *              204:
+//  *                  description: Comic borrado.
+//  *              500:
+//  *                  description: Error interno del servidor.
+//  */
 
 router.get("/", (req, res) => queryController.getAllComics(req, res));
-router.get("/:id", (req, res) => queryController.getComicById(req, res));
-router.get("/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
 /**
  * @swagger
- * /api/comics/{userId}/comics:
+ * /api/comics/:
  *      get:
- *          summary: Endpoint para listar los comic de un usuario concreto
+ *          summary: Obtener un listado de comics.
  *          tags:
- *              - User
- *          parameters:
- *              - in: path
- *                name: userId
- *                required: true
- *                description: Id del usuario del que desea traer los comics
- *                schema:
- *                      type: string
+ *              - Comic
  *          responses:
- *              201:
- *                  description: Listado de comics por usuario.
- *              500:
- *                  description: Error interno del servidor.
- */
+ *              200:
+ *                  description: Comics obtenidos con éxito.
+ * */
+
+router.get("/:id", (req, res) => queryController.getComicById(req, res));
+router.get("/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
+//TODO: No funciona aún
+// /**
+//  * @swagger
+//  * /api/comics/{userId}/comics:
+//  *      get:
+//  *          summary: Endpoint para listar los comic de un usuario concreto
+//  *          tags:
+//  *              - User
+//  *          parameters:
+//  *              - in: path
+//  *                name: userId
+//  *                required: true
+//  *                description: Id del usuario del que desea traer los comics
+//  *                schema:
+//  *                      type: string
+//  *          responses:
+//  *              201:
+//  *                  description: Listado de comics por usuario.
+//  *              500:
+//  *                  description: Error interno del servidor.
+//  */
 
 export default router;
