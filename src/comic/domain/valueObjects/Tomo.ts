@@ -1,7 +1,8 @@
 import {Chapter} from "./Chapter";
+import {v4 as uuidv4} from "uuid";
 
 export class Tomo{
-    id: string;
+    id = uuidv4();
     number: number
     chapters: Chapter[];
 

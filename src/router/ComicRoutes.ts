@@ -22,7 +22,7 @@ router.post("/:userId/comics", (req, res) => commandController.createComic(req, 
  *              - Comic
  *          parameters:
  *              - in: path
- *                name: id
+ *                name: userId  # Ajustado a 'userId'
  *                required: true
  *                description: Id del usuario en el que desea guardar el comic.
  *                schema:
@@ -39,7 +39,7 @@ router.post("/:userId/comics", (req, res) => commandController.createComic(req, 
  *                  description: Comic guardado.
  *              500:
  *                  description: Error interno del servidor.
- * */
+ */
 
 router.delete("/:id", (req, res) => commandController.deleteComic(req, res));
 

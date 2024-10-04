@@ -13,9 +13,15 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
     }
 
     save(comic: Comic, userId: string): Comic {
-        comic.id = uuidv4();
-        this.comics.push(comic);
-        this.userComicRepository.save(userId, comic.id);
+        const existingComicIndex = this.comics.findIndex(u => u.id === comic.id);
+
+        if (existingComicIndex !== -1) {
+            this.comics[existingComicIndex] = { ...this.comics[existingComicIndex], ...comic };
+        } else {
+            comic.id = uuidv4();
+            this.comics.push(comic);
+            this.userComicRepository.save(userId, comic.id);
+        }
         return comic;
     }
 

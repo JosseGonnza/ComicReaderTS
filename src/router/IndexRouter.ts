@@ -68,31 +68,30 @@ export default router;
  *                      type: string
  *                      description: Nombre del autor.
  *                  tomos:
- *                      type: []
+ *                      type: array
  *                      description: Lista de tomos.
- *                      properties:
- *                          id:
- *                              type: string
+ *                      items:
+ *                        type: object
+ *                        properties:
  *                          number:
- *                              type: number
+ *                            type: number
  *                          chapters:
- *                              type: []
- *                              description: Lista de capítulos.
+ *                            type: array
+ *                            description: Lista de capítulos.
+ *                            items:
+ *                              type: object
  *                              properties:
- *                                  id:
- *                                      type: string
- *                                  number:
- *                                      type: number
- *                                  name:
- *                                      type: string
- *                                  dateOfPublication:
- *                                      type: Date
- *                                  isRead:
- *                                      type: boolean
+ *                                number:
+ *                                  type: number
+ *                                name:
+ *                                  type: string
+ *                                dateOfPublication:
+ *                                  type: string
+ *                                  format: date
+ *                                isRead:
+ *                                  type: boolean
  *              required:
  *                      - name
  *                      - author
  *                      - tomos
- *                      - number
- *                      - chapters
  * */
