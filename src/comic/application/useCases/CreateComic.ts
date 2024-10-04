@@ -13,7 +13,7 @@ export class CreateComic {
 
     execute(request: CreateComicRequest, user: User): Comic {
         const newComic: Comic = {
-            id: "",
+            id: '',
             name: request.name,
             author: request.author,
             tomos: request.tomos,

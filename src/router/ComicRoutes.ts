@@ -22,7 +22,7 @@ router.post("/:userId/comics", (req, res) => commandController.saveComic(req, re
  *              - Comic
  *          parameters:
  *              - in: path
- *                name: userId  # Ajustado a 'userId'
+ *                name: userId
  *                required: true
  *                description: Id del usuario en el que desea guardar el comic.
  *                schema:
@@ -46,5 +46,25 @@ router.delete("/:id", (req, res) => commandController.deleteComic(req, res));
 router.get("/", (req, res) => queryController.getAllComics(req, res));
 router.get("/:id", (req, res) => queryController.getComicById(req, res));
 router.get("/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
+/**
+ * @swagger
+ * /api/comics/{userId}/comics:
+ *      get:
+ *          summary: Endpoint para listar los comic de un usuario concreto
+ *          tags:
+ *              - User
+ *          parameters:
+ *              - in: path
+ *                name: userId
+ *                required: true
+ *                description: Id del usuario del que desea traer los comics
+ *                schema:
+ *                      type: string
+ *          responses:
+ *              201:
+ *                  description: Listado de comics por usuario.
+ *              500:
+ *                  description: Error interno del servidor.
+ */
 
 export default router;

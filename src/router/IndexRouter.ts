@@ -70,26 +70,6 @@ export default router;
  *                  tomos:
  *                      type: array
  *                      description: Lista de tomos.
- *                      items:
- *                        type: object
- *                        properties:
- *                          number:
- *                            type: number
- *                          chapters:
- *                            type: array
- *                            description: Lista de capítulos.
- *                            items:
- *                              type: object
- *                              properties:
- *                                number:
- *                                  type: number
- *                                name:
- *                                  type: string
- *                                dateOfPublication:
- *                                  type: string
- *                                  format: date
- *                                isRead:
- *                                  type: boolean
  *              required:
  *                      - name
  *                      - author
