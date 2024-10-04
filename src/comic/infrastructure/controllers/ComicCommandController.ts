@@ -9,7 +9,7 @@ export class ComicCommandController{
         this.comicRepository = comicRepository;
     }
 
-    createComic(req: Request, res: Response): void {
+    saveComic(req: Request, res: Response): void {
         const { name, author, tomos } = req.body;
         const userId = req.params.userId; // ID del usuario al que se le asignará el cómic
 

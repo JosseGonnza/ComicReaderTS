@@ -12,7 +12,7 @@ const commandController = new ComicCommandController(comicRepo);
 const queryController = new ComicQueryController(comicRepo);
 
 
-router.post("/:userId/comics", (req, res) => commandController.createComic(req, res));
+router.post("/:userId/comics", (req, res) => commandController.saveComic(req, res));
 /**
  * @swagger
  * /api/comics/{userId}/comics:
