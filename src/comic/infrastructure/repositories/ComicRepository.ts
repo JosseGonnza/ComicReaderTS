@@ -26,10 +26,10 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
         return comic;
     }
 
-    delete(comic: Comic, userId: string): boolean {
-        const userComics = this.userComicRepository.getComicsByUserId(userId);
-        const index = this.comics.findIndex(comic => comic.id === comic.id);
-        if (index === -1 || userComics.find(index.valueOf)) {
+    delete(comicId: string, userId: string): boolean {
+        const userComics = this.getComicsByUser(userId);
+        const index = this.comics.findIndex(comic => comic.id === comicId);
+        if (index === -1) {
             return false;
         }
         this.comics.splice(index, 1);

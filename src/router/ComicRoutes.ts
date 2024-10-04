@@ -43,30 +43,30 @@ router.post("/:userId/comics", (req, res) => commandController.saveComic(req, re
 
 router.delete("/:userId/:id", (req, res) => commandController.deleteComic(req, res));
 //TODO: No funciona aún
-// /**
-//  * @swagger
-//  * /api/comics/{userId}/{id}:
-//  *      delete:
-//  *          summary: Endpoint para eliminar un comic de un usuario concreto
-//  *          tags:
-//  *              - Comic
-//  *          parameters:
-//  *              - in: path
-//  *                name: userId
-//  *                required: true
-//  *                description: Id del usuario
-//  *              - in: path
-//  *                name: id
-//  *                required: true
-//  *                description: Id del comic que desea eliminar
-//  *                schema:
-//  *                      type: string
-//  *          responses:
-//  *              204:
-//  *                  description: Comic borrado.
-//  *              500:
-//  *                  description: Error interno del servidor.
-//  */
+/**
+ * @swagger
+ * /api/comics/{userId}/{id}:
+ *      delete:
+ *          summary: Endpoint para eliminar un comic de un usuario concreto
+ *          tags:
+ *              - Comic
+ *          parameters:
+ *              - in: path
+ *                name: userId
+ *                required: true
+ *                description: Id del usuario
+ *              - in: path
+ *                name: id
+ *                required: true
+ *                description: Id del comic que desea eliminar
+ *                schema:
+ *                      type: string
+ *          responses:
+ *              204:
+ *                  description: Comic borrado.
+ *              500:
+ *                  description: Error interno del servidor.
+ */
 
 router.get("/", (req, res) => queryController.getAllComics(req, res));
 /**
