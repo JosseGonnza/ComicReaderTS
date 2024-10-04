@@ -103,27 +103,26 @@ router.get("/:id", (req, res) => queryController.getComicById(req, res));
  *                  description: Comic no encontrado.
  * */
 
-router.get("/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
-//TODO: No funciona aún
-// /**
-//  * @swagger
-//  * /api/comics/{userId}/comics:
-//  *      get:
-//  *          summary: Endpoint para listar los comic de un usuario concreto
-//  *          tags:
-//  *              - User
-//  *          parameters:
-//  *              - in: path
-//  *                name: userId
-//  *                required: true
-//  *                description: Id del usuario del que desea traer los comics
-//  *                schema:
-//  *                      type: string
-//  *          responses:
-//  *              201:
-//  *                  description: Listado de comics por usuario.
-//  *              500:
-//  *                  description: Error interno del servidor.
-//  */
+router.get("/:userId/comics", (req, res) => queryController.getComicsFromUser(req, res));
+/**
+ * @swagger
+ * /api/comics/{userId}/comics:
+ *      get:
+ *          summary: Endpoint para listar los comic de un usuario concreto
+ *          tags:
+ *              - User
+ *          parameters:
+ *              - in: path
+ *                name: userId
+ *                required: true
+ *                description: Id del usuario del que desea traer los comics
+ *                schema:
+ *                      type: string
+ *          responses:
+ *              201:
+ *                  description: Listado de comics por usuario.
+ *              500:
+ *                  description: Error interno del servidor.
+ */
 
 export default router;

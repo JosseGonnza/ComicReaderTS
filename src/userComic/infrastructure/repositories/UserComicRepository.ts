@@ -13,10 +13,17 @@ export class UserComicRepository implements IUserComicCommandRepository, IUserCo
         return userComic;
     }
 
-    getComicsByUserId(userId: string): (Comic | undefined)[] {
+    getComicsByUserId(userId: string): string[] {
+        const userExists = this.userComics.some(uc => uc.userId === userId);
+
+        if (!userExists) {
+            throw new Error(`User with ID ${userId} not found.`);
+        }
+
+        // Devuelve los comicIds asociados al userId
         return this.userComics
             .filter(uc => uc.userId === userId)
-            .map(uc => uc.comic);
+            .map(uc => uc.comicId);
     }
 
     getUsersByComicId(comicId: string): (User | undefined)[] {

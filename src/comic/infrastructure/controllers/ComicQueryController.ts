@@ -25,14 +25,14 @@ export class ComicQueryController {
         }
     }
 
-    getComicsByUser(req: Request, res: Response): void {
+    getComicsFromUser(req: Request, res: Response): void {
         const userId = req.params.userId;
         const comics = this.comicRepository.getComicsByUser(userId);
 
-        if (comics.length === 0) {
-            res.status(404).json({ message: "No comics found for this user" });
-        } else {
+        if (comics.length !== 0) {
             res.status(200).json(comics);
+        } else {
+            res.status(404).json({message: "No comics found for this user"});
         }
     }
 }

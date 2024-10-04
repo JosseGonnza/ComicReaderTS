@@ -48,7 +48,17 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
         return comic;
     }
 
-    getComicsByUser(userId: string): (Comic | undefined)[] {
-        return this.userComicRepository.getComicsByUserId(userId);
+    getComicsByUser(userId: string): Comic[] {
+        // Obtener los comicIds asociados al userId desde userComicRepository
+        const comicIds = this.userComicRepository.getComicsByUserId(userId);
+
+        // Obtener el objeto Comic completo para cada comicId
+        return comicIds.map(comicId => {
+            const comic = this.getById(comicId);
+            if (!comic) {
+                throw new Error(`Comic with ID ${comicId} not found.`);
+            }
+            return comic;
+        });
     }
 }
