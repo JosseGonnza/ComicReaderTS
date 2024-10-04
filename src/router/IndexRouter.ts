@@ -51,3 +51,46 @@ export default router;
  *                      - password
  *                      - phone
  * */
+
+//TODO:
+// Esquema de la request de comics
+/**
+ * @swagger
+ * components:
+ *      schemas:
+ *          ComicSchema:
+ *              type: object
+ *              properties:
+ *                  name:
+ *                      type: string
+ *                      description: Nombre del comic.
+ *                  author:
+ *                      type: string
+ *                      description: Nombre del autor.
+ *                  tomos:
+ *                      type: Array
+ *                      description: Lista de tomos.
+ *                      properties:
+ *                          id:
+ *                              type: string
+ *                          number:
+ *                              type: number
+ *                          chapters:
+ *                              type: List<Chapter>
+ *                              description: Lista de capítulos.
+ *                              properties:
+ *                                  id:
+ *                                      type: string
+ *                                  number:
+ *                                      type: number
+ *                                  name:
+ *                                      type: string
+ *                                  dateOfPublication:
+ *                                      type: Date
+ *                                  isRead:
+ *                                      type: boolean
+ *              required:
+ *                      - name
+ *                      - author
+ *                      - tomos
+ * */
