@@ -68,7 +68,7 @@ export default router;
  *                      type: string
  *                      description: Nombre del autor.
  *                  tomos:
- *                      type: Array
+ *                      type: []
  *                      description: Lista de tomos.
  *                      properties:
  *                          id:
@@ -76,7 +76,7 @@ export default router;
  *                          number:
  *                              type: number
  *                          chapters:
- *                              type: List<Chapter>
+ *                              type: []
  *                              description: Lista de capítulos.
  *                              properties:
  *                                  id:
@@ -93,4 +93,6 @@ export default router;
  *                      - name
  *                      - author
  *                      - tomos
+ *                      - number
+ *                      - chapters
  * */
