@@ -17,6 +17,7 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
 
         if (existingComicIndex !== -1) {
             this.comics[existingComicIndex] = { ...this.comics[existingComicIndex], ...comic };
+            throw new Error("Comic is exist.")
         } else {
             comic.id = uuidv4();
             this.comics.push(comic);
@@ -39,8 +40,12 @@ export class ComicRepository implements IComicCommandRepository, IComicQueryRepo
         return this.comics;
     }
 
-    getById(comicId: string): Comic | undefined {
-        return this.comics.find(comic => comic.id === comicId);
+    getById(comicId: string): Comic {
+        const comic = this.comics.find(comic => comic.id === comicId)
+        if (comic === undefined){
+            throw new Error("Comic doesn´t exist.")
+        }
+        return comic;
     }
 
     getComicsByUser(userId: string): (Comic | undefined)[] {
