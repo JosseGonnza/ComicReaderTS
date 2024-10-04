@@ -28,7 +28,7 @@ export default router;
  * @swagger
  * components:
  *      schemas:
- *          PostUserSchema:
+ *          UserSchema:
  *              type: object
  *              properties:
  *                  nickName:
