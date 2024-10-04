@@ -82,6 +82,27 @@ router.get("/", (req, res) => queryController.getAllComics(req, res));
  * */
 
 router.get("/:id", (req, res) => queryController.getComicById(req, res));
+/**
+ * @swagger
+ * /api/comics/{id}:
+ *      get:
+ *          summary: Obtener un comic mediante el id.
+ *          tags:
+ *              - Comic
+ *          parameters:
+ *              - in: path
+ *                name: id
+ *                required: true
+ *                description: Id del comic que desea obtener.
+ *                schema:
+ *                      type: string
+ *          responses:
+ *              200:
+ *                  description: Comic obtenido con éxito.
+ *              404:
+ *                  description: Comic no encontrado.
+ * */
+
 router.get("/:userId/comics", (req, res) => queryController.getComicsByUser(req, res));
 //TODO: No funciona aún
 // /**
