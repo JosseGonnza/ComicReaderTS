@@ -25,7 +25,7 @@ export class ComicCommandController{
 
     deleteComic(req: Request, res: Response): void {
         const userId = req.params.userId;
-        const comicId = req.params.id;
+        const comicId = req.params.comicId;
         const deleted = this.comicRepository.delete(comicId, userId);
         if (deleted) {
             res.status(200).json({message: "Comic deleted"});

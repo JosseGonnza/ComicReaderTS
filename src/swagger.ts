@@ -5,7 +5,7 @@ const options: swaggerJSDoc.Options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'UserComic API Molona',
+            title: 'ComicReader API -typesript-',
             version: '1.0.0'
         },
     },
