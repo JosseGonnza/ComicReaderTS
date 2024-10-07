@@ -2,6 +2,7 @@ import {UserRepository} from "../../infrastructure/repositories/UserRepository";
 import {UserComic} from "../../../userComic/domain/entities/UserComic";
 import {User} from "../../domain/entities/User";
 import {UserComicRepository} from "../../../userComic/infrastructure/repositories/UserComicRepository";
+import {v4 as uuidv4} from "uuid";
 
 export class CreateUser {
     private userComicRepository: UserComicRepository;
@@ -14,7 +15,7 @@ export class CreateUser {
 
     execute(request: CreateUserRequest): User {
         const newUser: User = {
-            id: "", // Se asignará más adelante
+            id: uuidv4(),
             nickName: request.nickName,
             email: request.email,
             password: request.password,

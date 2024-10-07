@@ -1,7 +1,6 @@
 import {IUserCommandRepository} from "../../domain/ports/IUserCommandRepository";
 import {IUserQueryRepository} from "../../domain/ports/IUserQueryRepository";
 import {User} from "../../domain/entities/User";
-import {v4 as uuidv4} from "uuid"
 
 export class UserRepository implements IUserCommandRepository, IUserQueryRepository{
     private users: User[] = [];
@@ -19,7 +18,6 @@ export class UserRepository implements IUserCommandRepository, IUserQueryReposit
         if (existingUserIndex !== -1) {
             this.users[existingUserIndex] = { ...this.users[existingUserIndex], ...user };
         } else {
-            user.id = uuidv4();
             this.users.push(user);
         }
         return user;

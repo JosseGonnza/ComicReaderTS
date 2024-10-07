@@ -5,19 +5,26 @@ import {ComicCommandController} from "../comic/infrastructure/controllers/ComicC
 import {ComicQueryController} from "../comic/infrastructure/controllers/ComicQueryController";
 
 const router = Router();
-const comicRepo = new ComicRepository();
 const userComicRepo = new UserComicRepository();
+const comicRepo = new ComicRepository(userComicRepo);
 const queryController = new ComicQueryController(comicRepo);
 const commandController = new ComicCommandController(comicRepo, userComicRepo);
 
-router.post("/", (req, res) => commandController.saveComic(req, res));
+router.post("/:userId", (req, res) => commandController.saveComic(req, res));
 /**
  * @swagger
- * /api/comics:
+ * /api/comics/{id}:
  *      post:
- *          summary: Guardar un comic
+ *          summary: Guardar un comic en un usuario
  *          tags:
  *              - Comic
+ *          parameters:
+ *              - in: path
+ *                name: id
+ *                required: true
+ *                description: Id del user que desea guardar el comic.
+ *                schema:
+ *                      type: string
  *          requestBody:
  *              description: Esquema para guardar un comic
  *              required: true

@@ -5,26 +5,32 @@ import {UserComic} from "../../domain/entities/UserComic";
 export class UserComicRepository implements IUserComicCommandRepository, IUserComicQueryRepository {
     private userComics: UserComic[] = [];
 
+    getUserById(userId: string): UserComic {
+        const userComic = this.userComics.find(u => u.userId === userId);
+        if (userComic === undefined) {
+            throw new Error("User id does not exist.");
+        }
+        return userComic;
+    }
+
     saveUser(user: string) {
         const userComic = new UserComic(user, []);
         this.userComics.push(userComic);
     }
 
-    getUserById(userId: string): UserComic {
-        const userExist = this.userComics.find(u => u.userId === userId);
-        if (!userExist) {
-            throw new Error("User id does not exist.");
+    saveComicFromUser(userId: string, comicId: string): UserComic {
+        const userComic = this.userComics.find(uc => uc.userId === userId);
+        if (!userComic) {
+            throw new Error('User not found');
         }
-        return userExist;
+        if (userComic.comicIds.includes(comicId)) {
+            throw new Error('Comic already exists in the list');
+        }
+        userComic.comicIds.push(comicId);
+        return userComic;
     }
 
-    // saveComicFromUser(userId: string, comicId: string): UserComic {
-    //     const userComic = new UserComic(userId, comicId);
-    //     this.userComics.push(userComic);
-    //     console.log(this.userComics);
-    //     return userComic;
-    // }
-    //
+
     // getComicsByUserId(userId: string): string[] {
     //     const userExists = this.userComics.some(uc => uc.userId === userId);
     //     if (!userExists) {
