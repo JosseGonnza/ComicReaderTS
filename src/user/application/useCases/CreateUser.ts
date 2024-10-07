@@ -1,12 +1,15 @@
 import {UserRepository} from "../../infrastructure/repositories/UserRepository";
 import {UserComic} from "../../../userComic/domain/entities/UserComic";
 import {User} from "../../domain/entities/User";
+import {UserComicRepository} from "../../../userComic/infrastructure/repositories/UserComicRepository";
 
 export class CreateUser {
-    private repository: UserRepository;
+    private userComicRepository: UserComicRepository;
+    private userRepository: UserRepository;
 
-    constructor(repository: UserRepository) {
-        this.repository = repository;
+    constructor(userRepository: UserRepository, userComicRepository: UserComicRepository) {
+        this.userRepository = userRepository;
+        this.userComicRepository = userComicRepository;
     }
 
     execute(request: CreateUserRequest): User {
@@ -18,7 +21,8 @@ export class CreateUser {
             phone: request.phone,
             userComics: request.userComics
         };
-        return this.repository.save(newUser);
+        this.userComicRepository.saveUser(newUser.id);
+        return this.userRepository.save(newUser);
     }
 }
 

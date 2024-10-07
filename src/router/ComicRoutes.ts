@@ -5,10 +5,10 @@ import {ComicCommandController} from "../comic/infrastructure/controllers/ComicC
 import {ComicQueryController} from "../comic/infrastructure/controllers/ComicQueryController";
 
 const router = Router();
-// const userComicRepo = new UserComicRepository();
 const comicRepo = new ComicRepository();
-const commandController = new ComicCommandController(comicRepo);
+const userComicRepo = new UserComicRepository();
 const queryController = new ComicQueryController(comicRepo);
+const commandController = new ComicCommandController(comicRepo, userComicRepo);
 
 router.post("/", (req, res) => commandController.saveComic(req, res));
 /**

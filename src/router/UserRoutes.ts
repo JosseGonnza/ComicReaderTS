@@ -2,13 +2,15 @@ import {Router} from 'express';
 import {UserRepository} from "../user/infrastructure/repositories/UserRepository";
 import {UserCommandController} from "../user/infrastructure/controllers/UserCommandController";
 import {UserQueryController} from "../user/infrastructure/controllers/UserQueryController";
+import {UserComicRepository} from "../userComic/infrastructure/repositories/UserComicRepository";
 
 const router = Router();
-const repository = new UserRepository();
-const userCommandController = new UserCommandController(repository);
-const userQueryController = new UserQueryController(repository);
+const userComicRepository = new UserComicRepository;
+const userRepository = new UserRepository();
+const userCommandController = new UserCommandController(userRepository, userComicRepository);
+const userQueryController = new UserQueryController(userRepository);
 
-router.post('/', (req, res) => userCommandController.post(req, res));
+router.post('/', (req, res) => userCommandController.save(req, res));
 // Componente para swagger
 /**
  * @swagger
@@ -31,7 +33,7 @@ router.post('/', (req, res) => userCommandController.post(req, res));
  *                  description: Error interno del servidor.
  * */
 
-router.put('/:id', (req, res) => userCommandController.put(req, res));
+router.put('/:id', (req, res) => userCommandController.update(req, res));
 /**
  * @swagger
  * /api/users/{id}:

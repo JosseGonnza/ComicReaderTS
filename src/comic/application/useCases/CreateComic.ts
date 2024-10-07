@@ -1,17 +1,20 @@
-import {UserComic} from "../../../userComic/domain/entities/UserComic";
+import {UserComicRepository} from "../../../userComic/infrastructure/repositories/UserComicRepository";
 import {ComicRepository} from "../../infrastructure/repositories/ComicRepository";
+import {UserComic} from "../../../userComic/domain/entities/UserComic";
 import {Comic} from "../../domain/entities/Comic";
 import {Tomo} from "../../domain/valueObjects/Tomo";
-import {User} from "../../../user/domain/entities/User";
 
 export class CreateComic {
-    private repository: ComicRepository;
+    private comicRepository: ComicRepository;
+    private userComicRepository: UserComicRepository;
 
-    constructor(repository: ComicRepository) {
-        this.repository = repository;
+    constructor(comicRepository: ComicRepository, userComicRepository: UserComicRepository) {
+        this.comicRepository = comicRepository;
+        this.userComicRepository = userComicRepository;
     }
 
-    execute(request: CreateComicRequest): Comic {
+    execute(request: CreateComicRequest, userId: string): Comic {
+        const user = this.userComicRepository.getUserById(userId);
         const newComic: Comic = {
             id: '',
             name: request.name,
@@ -19,7 +22,8 @@ export class CreateComic {
             tomos: request.tomos,
             userComics: request.userComics
         };
-        return this.repository.save(newComic);
+        this.userComicRepository.saveUser(user);
+        return this.comicRepository.save(newComic);
     }
 }
 

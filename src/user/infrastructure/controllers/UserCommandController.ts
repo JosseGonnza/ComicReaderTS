@@ -3,25 +3,26 @@ import {UserRepository} from "../repositories/UserRepository";
 import {DeleteUser, DeleteUserRequest} from "../../application/useCases/DeleteUser";
 import {UpdateUser, UpdateUserRequest} from "../../application/useCases/UpdateUser";
 import {CreateUser, CreateUserRequest} from "../../application/useCases/CreateUser";
+import {UserComicRepository} from "../../../userComic/infrastructure/repositories/UserComicRepository";
 
 export class UserCommandController {
     private createUser: CreateUser;
     private updateUser: UpdateUser;
     private deleteUser: DeleteUser;
 
-    constructor(repository: UserRepository) {
-        this.createUser = new CreateUser(repository);
-        this.updateUser = new UpdateUser(repository);
-        this.deleteUser = new DeleteUser(repository);
+    constructor(userRepository: UserRepository, repository: UserComicRepository) {
+        this.createUser = new CreateUser(userRepository, repository);
+        this.updateUser = new UpdateUser(userRepository);
+        this.deleteUser = new DeleteUser(userRepository); //TODO: implementar borrar del userComicRepository
     }
 
-    post(req: Request, res: Response): void {
+    save(req: Request, res: Response): void {
         const request: CreateUserRequest = req.body;
         const user = this.createUser.execute(request);
         res.status(201).json({ message: "User created", user: user });
     }
 
-    put(req: Request, res: Response): void {
+    update(req: Request, res: Response): void {
         const { id } = req.params;  // Obtener el ID de la URL
         const request: UpdateUserRequest = req.body;
         request.id = id;  // Asegurar que el ID esté en el request
