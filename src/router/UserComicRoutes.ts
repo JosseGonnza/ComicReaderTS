@@ -1,16 +1,33 @@
-// import {Router} from "express";
-// import {UserComicRepository} from "../userComic/infrastructure/repositories/UserComicRepository";
-// import {ComicCommandController} from "../comic/infrastructure/controllers/ComicCommandController";
-// import {ComicQueryController} from "../comic/infrastructure/controllers/ComicQueryController";
-// import {ComicRepository} from "../comic/infrastructure/repositories/ComicRepository";
-//
-// const router = Router();
-// const userComicRepo = new UserComicRepository();
-// const comicRepo = new ComicRepository();
-// const commandController = new ComicCommandController(comicRepo);
-// const queryController = new ComicQueryController(comicRepo);
-//
-//
+import {Router} from "express";
+import {UserComicRepository} from "../userComic/infrastructure/repositories/UserComicRepository";
+import {UserComicQueryController} from "../userComic/infrastructure/controllers/UserComicQueryController";
+
+const router = Router();
+const userComicRepo = new UserComicRepository();
+const queryController = new UserComicQueryController(userComicRepo);
+
+router.get("/userId/", (req, res) => queryController.getUserFromUserComic(req, res));
+/**
+ * @swagger
+ * /api/relations/{id}/:
+ *      get:
+ *          summary: Devolver un usuario
+ *          tags:
+ *              - Relations
+ *          parameters:
+ *              - in: path
+ *                name: userId
+ *                required: true
+ *                description: Id del usuario que desea devolver
+ *                schema:
+ *                      type: string
+ *          responses:
+ *              201:
+ *                  description: Usuario devuelto.
+ *              500:
+ *                  description: Error interno del servidor.
+ */
+
 // router.get("/:userId/", (req, res) => queryController.getComicsFromUser(req, res));
 // /**
 //  * @swagger
@@ -87,5 +104,5 @@
 //  *              500:
 //  *                  description: Error interno del servidor.
 //  */
-//
-// export default router;
+
+export default router;

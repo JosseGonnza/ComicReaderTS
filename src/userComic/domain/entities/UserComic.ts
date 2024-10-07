@@ -3,13 +3,13 @@ import {Comic} from "../../../comic/domain/entities/Comic";
 
 export class UserComic {
     public userId: string;
-    public comicId: string;
+    public comicIds: string[];
 
-    // public user: User | undefined;
-    // public comic: Comic | undefined;
+    public user: User | undefined;
+    public comic: Comic | undefined;
 
-    constructor(userId: string, comicId: string) {
+    constructor(userId: string, comicIds: string[]) {
         this.userId = userId;
-        this.comicId = comicId;
+        this.comicIds = comicIds;
     }
 }

@@ -6,16 +6,16 @@ export class UserComicRepository implements IUserComicCommandRepository, IUserCo
     private userComics: UserComic[] = [];
 
     saveUser(user: string) {
-        const userComic = new UserComic(user, "");
+        const userComic = new UserComic(user, []);
         this.userComics.push(userComic);
     }
 
-    getUserById(userId: string): string {
+    getUserById(userId: string): UserComic {
         const userExist = this.userComics.find(u => u.userId === userId);
         if (!userExist) {
             throw new Error("User id does not exist.");
         }
-        return userExist.userId;
+        return userExist;
     }
 
     // saveComicFromUser(userId: string, comicId: string): UserComic {

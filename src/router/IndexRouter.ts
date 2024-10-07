@@ -1,14 +1,14 @@
 import express from "express";
 import userRoutes from "./UserRoutes";
 import comicRoutes from "./ComicRoutes";
-// import userComicRoutes from "./UserComicRoutes";
+import userComicRoutes from "./UserComicRoutes";
 
 const router = express.Router();
 
 // Rutas que exportamos a app.ts
 router.use('/api/users', userRoutes);
 router.use('/api/comics', comicRoutes);
-// router.use('/api/users', userComicRoutes);
+router.use('/api/relations', userComicRoutes);
 
 export default router;
 

@@ -22,7 +22,7 @@ export class CreateComic {
             tomos: request.tomos,
             userComics: request.userComics
         };
-        this.userComicRepository.saveUser(user);
+        this.userComicRepository.saveUser(user.userId);
         return this.comicRepository.save(newComic);
     }
 }
