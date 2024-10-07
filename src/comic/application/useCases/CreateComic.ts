@@ -11,7 +11,7 @@ export class CreateComic {
         this.repository = repository;
     }
 
-    execute(request: CreateComicRequest, user: User): Comic {
+    execute(request: CreateComicRequest): Comic {
         const newComic: Comic = {
             id: '',
             name: request.name,
@@ -19,7 +19,7 @@ export class CreateComic {
             tomos: request.tomos,
             userComics: request.userComics
         };
-        return this.repository.save(newComic, user.id);
+        return this.repository.save(newComic);
     }
 }
 

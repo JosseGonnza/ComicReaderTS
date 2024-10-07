@@ -5,15 +5,37 @@ import {ComicCommandController} from "../comic/infrastructure/controllers/ComicC
 import {ComicQueryController} from "../comic/infrastructure/controllers/ComicQueryController";
 
 const router = Router();
-const userComicRepo = new UserComicRepository();
-const comicRepo = new ComicRepository(userComicRepo);
+// const userComicRepo = new UserComicRepository();
+const comicRepo = new ComicRepository();
 const commandController = new ComicCommandController(comicRepo);
 const queryController = new ComicQueryController(comicRepo);
+
+router.post("/", (req, res) => commandController.saveComic(req, res));
+/**
+ * @swagger
+ * /api/comics:
+ *      post:
+ *          summary: Guardar un comic
+ *          tags:
+ *              - Comic
+ *          requestBody:
+ *              description: Esquema para guardar un comic
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/ComicSchema'
+ *          responses:
+ *              201:
+ *                  description: Comic guardado.
+ *              500:
+ *                  description: Error interno del servidor.
+ */
 
 router.get("/", (req, res) => queryController.getAllComics(req, res));
 /**
  * @swagger
- * /api/comics/:
+ * /api/comics:
  *      get:
  *          summary: Obtener un listado de comics.
  *          tags:
@@ -23,26 +45,26 @@ router.get("/", (req, res) => queryController.getAllComics(req, res));
  *                  description: Comics obtenidos con éxito.
  * */
 
-router.get("/:id", (req, res) => queryController.getComicById(req, res));
-/**
- * @swagger
- * /api/comics/{id}:
- *      get:
- *          summary: Obtener un comic mediante el id.
- *          tags:
- *              - Comic
- *          parameters:
- *              - in: path
- *                name: id
- *                required: true
- *                description: Id del comic que desea obtener.
- *                schema:
- *                      type: string
- *          responses:
- *              200:
- *                  description: Comic obtenido con éxito.
- *              404:
- *                  description: Comic no encontrado.
- * */
+// router.get("/:id", (req, res) => queryController.getComicById(req, res));
+// /**
+//  * @swagger
+//  * /api/comics/{id}:
+//  *      get:
+//  *          summary: Obtener un comic mediante el id.
+//  *          tags:
+//  *              - Comic
+//  *          parameters:
+//  *              - in: path
+//  *                name: id
+//  *                required: true
+//  *                description: Id del comic que desea obtener.
+//  *                schema:
+//  *                      type: string
+//  *          responses:
+//  *              200:
+//  *                  description: Comic obtenido con éxito.
+//  *              404:
+//  *                  description: Comic no encontrado.
+//  * */
 
 export default router;

@@ -14,9 +14,9 @@ export class ComicCommandController{
 
     saveComic(req: Request, res: Response): void {
         const { name, author, tomos } = req.body;
-        const userId = req.params.userId; // ID del usuario al que se le asignará el cómic
+        // const userId = req.params.userId; // ID del usuario al que se le asignará el cómic
         const newComic = new Comic(name, author, tomos);
-        const savedComic = this.comicRepository.save(newComic, userId);
+        const savedComic = this.createComic.execute(newComic);
         res.status(201).json({
             message: "Comic created and assigned to user",
             comic: savedComic

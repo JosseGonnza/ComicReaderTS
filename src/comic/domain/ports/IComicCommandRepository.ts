@@ -1,6 +1,6 @@
 import {Comic} from "../entities/Comic";
 
 export interface IComicCommandRepository{
-    save(comic: Comic, userId: string): Comic;
+    save(comic: Comic): Comic;
     delete(comicId: string, userId: string): boolean
 }

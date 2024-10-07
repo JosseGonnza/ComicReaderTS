@@ -1,7 +1,6 @@
 import {IUserComicCommandRepository} from "../../domain/ports/IUserComicCommandRepository";
 import {IUserComicQueryRepository} from "../../domain/ports/IUserComicQueryRepository";
 import {UserComic} from "../../domain/entities/UserComic";
-import {User} from "../../../user/domain/entities/User";
 
 export class UserComicRepository implements IUserComicCommandRepository, IUserComicQueryRepository {
     private userComics: UserComic[] = [];
@@ -9,6 +8,7 @@ export class UserComicRepository implements IUserComicCommandRepository, IUserCo
     saveComicFromUser(userId: string, comicId: string): UserComic {
         const userComic = new UserComic(userId, comicId);
         this.userComics.push(userComic);
+        console.log(this.userComics);
         return userComic;
     }
 
@@ -23,9 +23,9 @@ export class UserComicRepository implements IUserComicCommandRepository, IUserCo
             .map(uc => uc.comicId);
     }
 
-    getUsersByComicId(comicId: string): (User | undefined)[] {
-        return this.userComics
-            .filter(uc => uc.comicId === comicId)
-            .map(uc => uc.user);
-    }
+    // getUsersByComicId(comicId: string): (User | undefined)[] {
+    //     return this.userComics
+    //         .filter(uc => uc.comicId === comicId)
+    //         .map(uc => uc.user);
+    // }
 }

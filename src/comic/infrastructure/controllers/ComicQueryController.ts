@@ -10,6 +10,9 @@ export class ComicQueryController {
 
     getAllComics(req: Request, res: Response): void {
         const comics = this.comicRepository.getAll();
+        if (comics.length === 0) {
+            res.status(404).send("List is empty.")
+        }
         res.status(200).json(comics);
     }
 

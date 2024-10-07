@@ -5,7 +5,7 @@ const options: swaggerJSDoc.Options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'ComicReader API -typesript-',
+            title: 'ComicReader API -typescript-',
             version: '1.0.0'
         },
     },
